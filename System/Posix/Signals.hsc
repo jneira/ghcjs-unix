@@ -21,6 +21,10 @@
 #include "HsUnix.h"
 ##include "HsUnix.h"
 
+-- #ifdef HAVE_SIGNAL_H
+-- #include <signal.h>
+-- #endif
+
 module System.Posix.Signals (
   -- * The Signal type
   Signal,
