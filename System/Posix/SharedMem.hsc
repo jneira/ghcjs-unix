@@ -24,7 +24,9 @@ module System.Posix.SharedMem
 #include "HsUnix.h"
 
 #include <sys/types.h>
+#ifdef HAVE_MMAN_H
 #include <sys/mman.h>
+#endif
 #include <fcntl.h>
 
 import System.Posix.Types
