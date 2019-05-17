@@ -310,7 +310,7 @@ struct tms {
 
 #ifndef HAVE_TERMIOS_H
 
-#define _POSIX_VDISABLE
+#define _POSIX_VDISABLE '\0'
 
 #define TCOOFF		0
 #define TCOON		1
