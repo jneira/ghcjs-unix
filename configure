@@ -3652,13 +3652,13 @@ $as_echo "$ac_cv_safe_to_define___extensions__" >&6; }
 ac_config_headers="$ac_config_headers include/HsUnixConfig.h"
 
 
-# Is this a Unix system?
-ac_fn_c_check_header_mongrel "$LINENO" "dlfcn.h" "ac_cv_header_dlfcn_h" "$ac_includes_default"
-if test "x$ac_cv_header_dlfcn_h" = xyes; then :
+# Is this a Unix system? Yes
+# ac_fn_c_check_header_mongrel "$LINENO" "dlfcn.h" "ac_cv_header_dlfcn_h" "$ac_includes_default"
+# if test "x$ac_cv_header_dlfcn_h" = xyes; then :
   BUILD_PACKAGE_BOOL=True
-else
-  BUILD_PACKAGE_BOOL=False
-fi
+# else
+#   BUILD_PACKAGE_BOOL=False
+# fi
 
 
 
