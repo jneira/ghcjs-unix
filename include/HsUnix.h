@@ -9,6 +9,11 @@
 #ifndef HSUNIX_H
 #define HSUNIX_H
 
+#ifdef mingw32_BUILD_OS
+
+#define __GNUC__ 7
+#endif
+
 #include "HsUnixConfig.h"
 #include "HsFFI.h"
 
@@ -92,8 +97,10 @@
 /* defined in rts/posix/Signals.c */
 extern HsInt nocldstop;
 
+#ifndef mingw32_BUILD_OS
 /* defined in libc */
 extern char **environ;
+#endif
 
 #ifdef HAVE_RTLDNEXT
 void *__hsunix_rtldNext (void);
@@ -106,7 +113,9 @@ void *__hsunix_rtldDefault (void);
 /* O_SYNC doesn't exist on Mac OS X and (at least some versions of) FreeBSD,
 fall back to O_FSYNC, which should be the same */
 #ifndef O_SYNC
-# define O_SYNC O_FSYNC
+# ifdef O_FSYNC
+#  define O_SYNC O_FSYNC
+# endif
 #endif
 
 // not part of POSIX, hence may not be always defined
@@ -120,6 +129,9 @@ int __hsunix_push_module(int fd, const char *module);
 #endif
 
 #ifdef mingw32_BUILD_OS 
+
+#define HAVE_SETENV
+#define HAVE_UNSETENV 1
 
 #ifndef HAVE_SYS_RESOURCE_H
 
@@ -257,7 +269,8 @@ struct flock {
 #define	_FSYNC		0x2000	/* do all writes synchronously */
 #define	_FNONBLOCK	0x4000	/* non blocking I/O (POSIX style) */
 #define	_FNOCTTY	0x8000	/* don't assign a ctty on this open */
- 
+
+#define O_SYNC	        _FSYNC
 #define	O_NONBLOCK	_FNONBLOCK
 #define	O_NOCTTY	_FNOCTTY
 
