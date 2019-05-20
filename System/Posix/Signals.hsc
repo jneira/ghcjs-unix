@@ -19,7 +19,6 @@
 ##include "HsUnixConfig.h"
 
 #include "HsUnix.h"
-##include "HsUnix.h"
 
 -- #ifdef HAVE_SIGNAL_H
 -- #include <signal.h>
